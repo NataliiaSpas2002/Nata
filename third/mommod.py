@@ -23,9 +23,8 @@ def count_chars(name):
 print("Number of characters", count_chars(name=1))
 
 def test(name):
-    line_count = count_lines(name)
-    char_count = count_chars(name)
-
+    line_count = count_lines(name=1)
+    char_count = count_chars(name=1)
     if line_count != -1 and char_count != -1:
         print(f"File '{name}' has {line_count} lines and {char_count} characters.")
     else:
@@ -37,6 +36,3 @@ def test(name):
             input_file = sys.argv[1]
 
 test(name="temp")
-
-
-
