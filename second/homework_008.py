@@ -1,45 +1,30 @@
 
-# Topic 7
+# Topic 8
 # Task 1
-def Convert(string):
-    list1 = list(string.split(" "))
-    return list1
-str1 = "There is nothing more dangerous than"
-my_dict = {i + 1: Convert(str1)[i] for i in range(len(Convert(str1)))}
-print(my_dict)
+
+def favourite_movie(movie):
+    print('My favourite movie is ' + movie)
+favourite_movie('Inception.')
 
 # Task 2
-stock = {
-    "banana": 6,
-    "apple": 0,
-    "orange": 32,
-    "pear": 15
-}
-prices = {
-    "banana": 4,
-    "apple": 2,
-    "orange": 1.5,
-    "pear": 3
-}
-total = sum(prices[v] * stock[v] for v in prices)
-print(total)
+def my_function(country, capital):
+    result = {country: capital}
+    return result
+
+print(my_function('Denmark', 'Copenhagen'))
 
 # Task 3
+import math
+def make_operation(operator, *args):
+    if operator == "+":
+        return sum(args)
+    elif operator == "-":
+        return args[0] - sum(args[1:])
+    elif operator == '*':
+        return math.prod(args[:])
+    else:
+        return 'Your number is wrong'
+print(make_operation( '+',3,4))
+print(make_operation('-', 3,4))
 
-j = [(j ** 2) for j in range(1,11)]
-my_list = list(enumerate(j, start = 1))
-print(my_list)
-
-# Task 4
-
-day = ['Monday', 'Tusday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-weeks_day = {day[i]: i + 1 for i in range(len(day))}
-print(weeks_day)
-number_weeks_day = {i + 1: day[i] for i in range(len(day))}
-print(number_weeks_day)
-
-
-
-
-
-
+print(make_operation('a', 3,4,5))
