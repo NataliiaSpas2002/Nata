@@ -33,7 +33,7 @@ datafile_path = os.path.join(current_dir, "data", (args.data_path + ".json"))
 
 if not os.path.exists(datafile_path):
 
-    with open(datafile_path, "w") as file:
+    with open(datafile_path, "a") as file:
         json.dump(PHONEBOOK, file, indent=4)
 
 else:
