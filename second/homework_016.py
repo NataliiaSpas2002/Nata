@@ -44,11 +44,6 @@ class Mathematician:
 
     def filter_leaps(self, year):
         return [i for i in year if i % 4 == 0]
-        # years = []
-        # for i in year:
-        #     if i % 4 == 0:
-        #         year s.append(i)
-        # return years
 
 
 m = Mathematician()
@@ -122,29 +117,41 @@ class ProductStore:
 
         self.products[product_name]['amount'] -= amount
         self.income += self.products[product_name]['price'] * amount
+
     def get_income(self):
         return self.income
+
     def get_all_products(self):
         return self.products
+
     def get_product_info(self, product_name):
         if product_name in self.products:
             return product_name, self.products[product_name]['amount']
         else:
             raise ValueError(f"Product {product_name} not found")
 
-
-p = Product('Sport', 'Football ball', 100)
-
-p2 = Product('Food', 'Durblue cheese', 1.2)
+p = Product('Sport', 'Football T-Shirt', 100)
+p2 = Product('Food', 'Ramen', 1.5)
 
 s = ProductStore()
 
 s.add(p, 10)
-
 s.add(p2, 300)
 
-# s.sell_product('Durblue cheese', 10)
+s.set_discount('Ramen', 10, 'name')
 
-assert s.get_product_info('Durblue cheese') == ('Durblue cheese', 290)
+s.sell_product('Ramen', 10)
 
+print(s.get_product_info('Ramen'))  # Output: ('Ramen', 290)
+
+
+# Task 4
+# class CustomException(Exception):
+#     def __init__(self, msg):
+#         # Call the base class constructor with the error message
+#         super().__init__(msg)
+#
+#         # Log the error message to the 'logs.txt' file
+#         with open('logs.txt', 'a') as log_file:
+#             log_file.write(f"Error: {msg}\n")
 
