@@ -1,51 +1,35 @@
-def plus(a,b):
-    return a+b
 
-if __name__ == '__main__':
-    print(plus(2,2))
-
-
-# Topic 6
+# Topic 5
 # Task 1
 import random
-year_list = []
-largest = []
-maximum = -1
-while len(year_list) < 10:
-    years = random.randrange(1, 2023)
-    year_list.append(years)
-if len(year_list) == 10:
-    print(year_list)
-    for num in year_list:
-        if num > maximum:
-            maximum = num
-            largest.append(num)
-    print(max(largest))
+number = random.randint(1,10)
+while True:
+    print("Guess number between 1 to 10: ")
+    guess = input()
+    i = int(guess)
+    if i == number:
+        print("Yes! You are right!")
+        break
+    elif i != number:
+        print("Try again!")
 
 # Task 2
+user_name = input("Please insert name: ")
+user_age = input("Please insert age: ")
+convert_age = int(user_age) + 1
+print("Hello " + str(user_name) + ", on your next birthday you’ll be " + str(convert_age) + " years!")
 
+# # Task 3
 import random
-lis1 = []
-lis2 = []
-lis3 = []
-for x in range(10):
-    lis1.append(random.randint(1,10))
-    lis2.append(random.randint(1,10))
-for x in lis1:
-    if (x in lis2) and not (x in lis3):
-        lis3.append(x)
-print(lis1)
-print(lis2)
-print(lis3)
-
-# Task 3
-
-my_list=[]
-for x in range(1, 100):
-    if (x%7==0) and not (x%5==0):
-        my_list.append(x)
-print (my_list)
-
+my_word = ['h', 'e', 'l', 'l', 'o']
+count = 0
+while count < 5:
+    random.shuffle(my_word)
+    my_string = ''
+    for x in my_word:
+        my_string += x
+    print(my_string)
+    count += 1
 
 
 

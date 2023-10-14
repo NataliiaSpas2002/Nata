@@ -15,6 +15,7 @@ print(my_function('Denmark', 'Copenhagen'))
 
 # Task 3
 import math
+
 def make_operation(operator, *args):
     if operator == "+":
         return sum(args)
@@ -24,7 +25,7 @@ def make_operation(operator, *args):
         return math.prod(args[:])
     else:
         return 'Your number is wrong'
+
 print(make_operation( '+',3,4))
 print(make_operation('-', 3,4))
-
 print(make_operation('a', 3,4,5))
