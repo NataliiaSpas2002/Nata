@@ -112,7 +112,7 @@ class ProductStore:
                 product_info['price'] *= (1 - percent / 100)
 
     def sell_product(self, product_name, amount):
-        if product_name not in self.products or self.products[product_name][amount] < amount:
+        if product_name not in self.products or self.products[product_name]['amount'] < amount:
             raise ValueError(f"Insufficient stock of {product_name}")
 
         self.products[product_name]['amount'] -= amount
@@ -143,7 +143,7 @@ s.set_discount('Ramen', 10, 'name')
 s.sell_product('Ramen', 10)
 
 print(s.get_product_info('Ramen'))  # Output: ('Ramen', 290)
-
+assert s.get_product_info('Ramen') == ('Ramen', 290)
 
 # Task 4
 # class CustomException(Exception):
