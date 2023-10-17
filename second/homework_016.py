@@ -146,12 +146,15 @@ print(s.get_product_info('Ramen'))  # Output: ('Ramen', 290)
 assert s.get_product_info('Ramen') == ('Ramen', 290)
 
 # Task 4
-# class CustomException(Exception):
-#     def __init__(self, msg):
-#         # Call the base class constructor with the error message
-#         super().__init__(msg)
-#
-#         # Log the error message to the 'logs.txt' file
-#         with open('logs.txt', 'a') as log_file:
-#             log_file.write(f"Error: {msg}\n")
+class CustomException(Exception):
+    def __init__(self, msg):
+        super().__init__(msg)
+
+        with open('logs.txt', 'a') as log_file:
+            log_file.write(f"Error: {msg}\n")
+
+try:
+    raise CustomException("This is a custom exception.")
+except CustomException as e:
+    print(f"Caught an exception: {e}")
 
