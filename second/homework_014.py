@@ -42,13 +42,13 @@ assert create_slogan("Steve") == "Steve drinks * in his brand new *!"
 def arg_rules(type_: type, max_length: int, contains: list):
     def decoraror(func):
         def wrapper(*args):
-            my_string = func(*args)
-            # print(my_string)
-            for item in args:
-                if isinstance(item, type_) and len(*args) <= max_length and not contains in args:
-                    return my_string
-                else:
-                    return False
+            if not all(isinstance(item, type_) for item in args):
+                return False
+            if any(len(item) > max_length for item in args):
+                return False
+            if not all(any(symbol in item for symbol in contains) for item in args):
+                return False
+            return func(*args)
 
         return wrapper
     return decoraror
