@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("data_path", help="Phonebook file path")
 args = parser.parse_args()
 
+
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
 PHONEBOOK = {
