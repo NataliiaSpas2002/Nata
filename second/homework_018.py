@@ -21,12 +21,6 @@ my_email2 = MyClass("nataliya55-gmail.com")
 my_email3 = MyClass("nataliya55@gmail.com")
 
 # Task 2
-# Implement 2 classes, the first one is the Boss and the second one is the Worker. impliment - реализовать
-# Worker has a property 'boss', and its value must be an instance of Boss. property свойство, instance -екземпляр
-# You can reassign this value, переназначить
-# should check whether the new value is Boss.
-# You should implement a method that allows you to add workers to a Boss
-# use getters and setters instead
 
 # created a descriptor class WorkerBossDescriptor
 # to handle the behavior of the boss property in the Worker class.
@@ -117,6 +111,26 @@ print(worker1)
 print(worker2)
 print(boss1)
 print(boss2)
+
+# Task 3
+
+class TypeDecorators:
+    pass
+
+
+@TypeDecorators.to_int
+def do_nothing(string: str):
+    return string
+
+
+@TypeDecorators.to_bool
+def do_something(string: str):
+    return string
+
+
+# assert do_nothing('25') == 25
+#
+# assert do_something('True') is True
 
 
 
