@@ -5,6 +5,7 @@ import os
 import json
 import argparse
 
+
 parser = argparse.ArgumentParser()
 parser.add_argument("data_path", help="Phonebook file path")
 args = parser.parse_args()
@@ -100,7 +101,6 @@ print(PHONEBOOK)
 with open(datafile_path, "w") as file:
     json.dump(PHONEBOOK, file, indent=4)
     print(PHONEBOOK)
-
 
 
 
