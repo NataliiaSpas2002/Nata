@@ -31,9 +31,10 @@ PHONEBOOK = {
     }
 }
 
-datafile_path = os.path.join(current_dir, "data", f"{args.data_path}.json")
+datafile_path = os.path.join(current_dir, f"{args.data_path}.json")
 
 if not os.path.exists(datafile_path):
+    print(datafile_path)
 
     with open(datafile_path, "w") as file:
         json.dump(PHONEBOOK, file, indent=4)
