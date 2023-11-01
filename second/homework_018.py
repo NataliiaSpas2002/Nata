@@ -3,23 +3,31 @@
 
 import re
 
+
 class MyClass:
     def __init__(self, email):
         self.validate(email)
+        self.email = email
 
     @classmethod
     def validate(cls, email):
         regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
 
-        if(re.fullmatch(regex, email)):
-            print("Email is valid")
+        if not re.fullmatch (regex, email):
+            raise ValueError("Invalid email format")
         else:
-            print("Invalid email format")
+            print("Email is valid")
 
 
-my_email = MyClass("nataliyaspasenko@gmail.com")
-my_email2 = MyClass("nataliya55-gmail.com")
-my_email3 = MyClass("nataliya55@gmail.com")
+try:
+    my_email = MyClass("nataliyaspasenko@gmail.com")
+    my_email2 = MyClass("Nataliya55@gmail.com")
+    my_email3 = MyClass("nataliya55-gmail.com")
+except ValueError as e:
+    print(e)
+
+
+
 
 # Task 2
 
@@ -30,6 +38,7 @@ class WorkerBossDescriptor:
     def __get__(self, instance, owner):
         return instance.boss
     #  assign a value to the boss property of a Worker instance.
+
     def __set__(self, instance, value):
         if isinstance(value, Boss) or value is None:
             if instance._boss:
@@ -39,6 +48,7 @@ class WorkerBossDescriptor:
                 value.add_worker(instance)
         else:
             raise ValueError("Invalid boss instance")
+
 
 class Boss:
 
@@ -72,6 +82,7 @@ class Boss:
 
     def __str__(self):
         return f"Boss(id={self._id}, name={self._name}, company={self._company})"
+
 
 class Worker:
     boss = WorkerBossDescriptor()
@@ -116,16 +127,15 @@ print(boss2)
 
 # Task 3
 from functools import wraps
+
 class TypeDecorators:
     @staticmethod
     def to_int(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
-            try:
-                return int(result)
-            except (ValueError, TypeError):
-                return result
+            return int(result)
+
         return wrapper
 
     @staticmethod
@@ -133,10 +143,7 @@ class TypeDecorators:
         @wraps(func)
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
-            try:
-                return str(result)
-            except (ValueError, TypeError):
-                return result
+            return str(result)
         return wrapper
 
     @staticmethod
@@ -144,10 +151,7 @@ class TypeDecorators:
         @wraps(func)
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
-            try:
-                return bool(result)
-            except (ValueError, TypeError):
-                return result
+            return bool(result)
         return wrapper
 
     @staticmethod
@@ -155,10 +159,7 @@ class TypeDecorators:
         @wraps(func)
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
-            try:
-                return float(result)
-            except(ValueError, TypeError):
-                return result
+            return float(result)
         return wrapper
 
 
@@ -166,6 +167,9 @@ class TypeDecorators:
 def do_nothing(string: str):
     return string
 
+@TypeDecorators.to_float
+def do_anything(string: str):
+    return string
 
 @TypeDecorators.to_bool
 def do_something(string: str):
@@ -176,8 +180,8 @@ assert do_nothing('25') == 25
 
 assert do_something('True') is True
 
+print(do_nothing('25'))
 
-
-
+print(do_anything('40'))
 
 
