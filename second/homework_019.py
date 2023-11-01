@@ -10,28 +10,29 @@ def with_index(iterable, start=0):
 my_list = ['physics', 'mathematics', 'chemistry']
 
 
-# for index, value in with_index(my_list, start=1):
-#     result = list(with_index(my_list, 1))
-# print(result)
+my_numeration = enumerate(my_list, 1)
 
-names = ['physics', 'mathematics', 'chemistry']
-enumNames = enumerate(names, 1)
-
-print(list(enumNames))
+print(list(my_numeration))
 
 # Task 2
 
-def in_range(start, end, step=1):
+
+def in_range(*args):
+    if len(args) == 2:
+        start, end = args
+        step = 1
+    elif len(args) == 3:
+        start, end, step = args
+    else:
+        raise ValueError
+
     current = start
     while (step > 0 and current < end) or (step < 0 and current > end):
         yield current
         current += step
 
 
-# result = list(in_range(0,100,10))
-# print(result)
-
-print(list(range(0, 100, 10)))
+print(list(range(20)))
 
 # Task 3
 
