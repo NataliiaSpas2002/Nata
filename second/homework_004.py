@@ -1,8 +1,3 @@
-def plus(a,b):
-    return a+b
-
-if __name__ == '__main__':
-    print(plus(2,2))
 # Topic 4
 # Task 1
 my_str = 'helloworld'
@@ -31,7 +26,6 @@ else:
 
 # Task 4
 first_name = input('Please enter your first name: ')
-first_name = str(first_name)
 if first_name == 'nataliia' or first_name == first_name.title():
     print('Thank you!')
 else:
