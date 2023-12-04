@@ -1,0 +1,12 @@
+# Topic 31
+# Task 1
+
+SELECT employees.first_name, employees.last_name, employees.department_id, department.department_name FROM employees INNER JOIN department ON employees.department_id = department.department_id;
+SELECT employees.first_name, employees.last_name, employees.department_id, department.department_name, department.location_id, locations.city, locations.state_province FROM employees JOIN department ON employees.department_id = department.department_id JOIN locations ON department.location_id = locations.location_id;
+SELECT employees.first_name, employees.last_name, employees.department_id, department.department_name FROM employees JOIN department ON employees.department_id = department.department_id WHERE employees.department_id IN(40, 80);
+SELECT department.department_id, department.department_name, COUNT(employees.employee_id) AS employee_count FROM department LEFT JOIN employees ON department.department_id = employees.department_id GROUP BY department.department_id, department.department_name;
+SELECT employees.first_name, employees.last_name, employees.job_id, jobs.job_title FROM employees INNER JOIN jobs ON employees.job_id = jobs.job_id;
+SELECT employees.first_name, employees.last_name, employees.job_id, jobs.job_title, (jobs.max_salary - jobs.min_salary) AS "Salary Difference" FROM employees JOIN jobs ON employees.job_id = jobs.job_id;
+SELECT jobs.job_title, ((jobs.max_salary + jobs.min_salary)/2) AS "Average Salary" FROM jobs;
+SELECT employees.first_name, employees.last_name, employees.department_id, department.location_id, locations.city FROM employees JOIN department ON employees.department_id = department.department_id JOIN locations ON department.location_id = locations.location_id WHERE locations.city = 'London';
+SELECT department.department_name, COUNT(employees.employee_id) AS employee_count FROM department LEFT JOIN employees ON department.department_id = employees.department_id GROUP BY department.department_name, department.department_id;
